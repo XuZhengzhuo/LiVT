@@ -1,0 +1,470 @@
+job dir: /work/hfx/MAE
+Namespace(aa='rand-m9-mstd0.5-inc1',
+accum_iter=8,
+adamW2=0.999,
+attn_only=False,
+bal_tau=1.0,
+batch_size=64,
+blr=0.001,
+ckpt_dir='/home/hfx/MAE/ckpt/finetune/iNat18/vit_base_patch16/margin_bce_E100',
+clip_grad=None,
+color_jitter=None,
+cutmix=1.0,
+cutmix_minmax=None,
+data_path='/home/hfx/DATA/iNat18',
+dataset='iNat18',
+device='cuda',
+dist_backend='nccl',
+dist_eval=True,
+dist_on_itp=False,
+dist_url='env://',
+distributed=True,
+drop_path=0.1,
+epochs=100,
+eval=False,
+finetune='/home/hfx/MAE/ckpt/pretrain/iNat18/vit_base_128/checkpoint.pth',
+global_pool=True,
+gpu=0,
+input_size=224,
+layer_decay=0.65,
+local_rank=0,
+log_dir='/home/hfx/MAE/exp/finetune/iNat18/vit_base_patch16/margin_bce_E100',
+loss='margin_bce',
+lr=None,
+min_lr=1e-06,
+mixup=0.8,
+mixup_mode='batch',
+mixup_prob=1.0,
+mixup_switch_prob=0.5,
+model='vit_base_patch16',
+nb_classes=8142,
+num_workers=16,
+pin_mem=True,
+prit=1,
+rank=0,
+recount=1,
+remode='pixel',
+reprob=0.25,
+resplit=False,
+resume='',
+seed=0,
+smoothing=0.0,
+start_epoch=0,
+warmup_epochs=5,
+weight_decay=0.05,
+world_size=4)
+Sampler_train = <torch.utils.data.distributed.DistributedSampler object at 0x7f22a852cf90>
+Warning: Enabling distributed evaluation with an eval dataset not divisible by process number. This will slightly alter validation results as extra duplicate entries are added to achieve equal num of samples per-process.
+Train on 437513 Image w.r.t. 8142 classes
+Load pre-trained checkpoint from: /home/hfx/MAE/ckpt/pretrain/iNat18/vit_base_128/checkpoint.pth
+_IncompatibleKeys(missing_keys=['head.weight', 'head.bias', 'fc_norm.weight', 'fc_norm.bias'], unexpected_keys=['mask_token', 'decoder_pos_embed', 'norm.weight', 'norm.bias', 'decoder_embed.weight', 'decoder_embed.bias', 'decoder_blocks.0.norm1.weight', 'decoder_blocks.0.norm1.bias', 'decoder_blocks.0.attn.qkv.weight', 'decoder_blocks.0.attn.qkv.bias', 'decoder_blocks.0.attn.proj.weight', 'decoder_blocks.0.attn.proj.bias', 'decoder_blocks.0.norm2.weight', 'decoder_blocks.0.norm2.bias', 'decoder_blocks.0.mlp.fc1.weight', 'decoder_blocks.0.mlp.fc1.bias', 'decoder_blocks.0.mlp.fc2.weight', 'decoder_blocks.0.mlp.fc2.bias', 'decoder_blocks.1.norm1.weight', 'decoder_blocks.1.norm1.bias', 'decoder_blocks.1.attn.qkv.weight', 'decoder_blocks.1.attn.qkv.bias', 'decoder_blocks.1.attn.proj.weight', 'decoder_blocks.1.attn.proj.bias', 'decoder_blocks.1.norm2.weight', 'decoder_blocks.1.norm2.bias', 'decoder_blocks.1.mlp.fc1.weight', 'decoder_blocks.1.mlp.fc1.bias', 'decoder_blocks.1.mlp.fc2.weight', 'decoder_blocks.1.mlp.fc2.bias', 'decoder_blocks.2.norm1.weight', 'decoder_blocks.2.norm1.bias', 'decoder_blocks.2.attn.qkv.weight', 'decoder_blocks.2.attn.qkv.bias', 'decoder_blocks.2.attn.proj.weight', 'decoder_blocks.2.attn.proj.bias', 'decoder_blocks.2.norm2.weight', 'decoder_blocks.2.norm2.bias', 'decoder_blocks.2.mlp.fc1.weight', 'decoder_blocks.2.mlp.fc1.bias', 'decoder_blocks.2.mlp.fc2.weight', 'decoder_blocks.2.mlp.fc2.bias', 'decoder_blocks.3.norm1.weight', 'decoder_blocks.3.norm1.bias', 'decoder_blocks.3.attn.qkv.weight', 'decoder_blocks.3.attn.qkv.bias', 'decoder_blocks.3.attn.proj.weight', 'decoder_blocks.3.attn.proj.bias', 'decoder_blocks.3.norm2.weight', 'decoder_blocks.3.norm2.bias', 'decoder_blocks.3.mlp.fc1.weight', 'decoder_blocks.3.mlp.fc1.bias', 'decoder_blocks.3.mlp.fc2.weight', 'decoder_blocks.3.mlp.fc2.bias', 'decoder_blocks.4.norm1.weight', 'decoder_blocks.4.norm1.bias', 'decoder_blocks.4.attn.qkv.weight', 'decoder_blocks.4.attn.qkv.bias', 'decoder_blocks.4.attn.proj.weight', 'decoder_blocks.4.attn.proj.bias', 'decoder_blocks.4.norm2.weight', 'decoder_blocks.4.norm2.bias', 'decoder_blocks.4.mlp.fc1.weight', 'decoder_blocks.4.mlp.fc1.bias', 'decoder_blocks.4.mlp.fc2.weight', 'decoder_blocks.4.mlp.fc2.bias', 'decoder_blocks.5.norm1.weight', 'decoder_blocks.5.norm1.bias', 'decoder_blocks.5.attn.qkv.weight', 'decoder_blocks.5.attn.qkv.bias', 'decoder_blocks.5.attn.proj.weight', 'decoder_blocks.5.attn.proj.bias', 'decoder_blocks.5.norm2.weight', 'decoder_blocks.5.norm2.bias', 'decoder_blocks.5.mlp.fc1.weight', 'decoder_blocks.5.mlp.fc1.bias', 'decoder_blocks.5.mlp.fc2.weight', 'decoder_blocks.5.mlp.fc2.bias', 'decoder_blocks.6.norm1.weight', 'decoder_blocks.6.norm1.bias', 'decoder_blocks.6.attn.qkv.weight', 'decoder_blocks.6.attn.qkv.bias', 'decoder_blocks.6.attn.proj.weight', 'decoder_blocks.6.attn.proj.bias', 'decoder_blocks.6.norm2.weight', 'decoder_blocks.6.norm2.bias', 'decoder_blocks.6.mlp.fc1.weight', 'decoder_blocks.6.mlp.fc1.bias', 'decoder_blocks.6.mlp.fc2.weight', 'decoder_blocks.6.mlp.fc2.bias', 'decoder_blocks.7.norm1.weight', 'decoder_blocks.7.norm1.bias', 'decoder_blocks.7.attn.qkv.weight', 'decoder_blocks.7.attn.qkv.bias', 'decoder_blocks.7.attn.proj.weight', 'decoder_blocks.7.attn.proj.bias', 'decoder_blocks.7.norm2.weight', 'decoder_blocks.7.norm2.bias', 'decoder_blocks.7.mlp.fc1.weight', 'decoder_blocks.7.mlp.fc1.bias', 'decoder_blocks.7.mlp.fc2.weight', 'decoder_blocks.7.mlp.fc2.bias', 'decoder_norm.weight', 'decoder_norm.bias', 'decoder_pred.weight', 'decoder_pred.bias'])
+Model = vit_base_patch16
+number of params (M): 92.06
+base lr: 1.00e-03
+actual lr: 8.00e-03
+accumulate grad iterations: 8
+effective batch size: 2048
+Mixup is activated!
+criterion = BinaryCrossEntropy()
+Start training for 100 epochs
+Accuracy of the network on the 24426 test images: 7.2%
+Max accuracy: 7.25%
+{"train_lr": 0.0007962592285840191, "train_loss": 1.016754126063978, "test_loss": 5.780538251002629, "test_acc1": 7.249877190422032, "test_acc5": 19.489929589542797, "epoch": 0, "n_parameters": 92059854}
+Training epoch 0 for 0:12:15
+Accuracy of the network on the 24426 test images: 19.9%
+Max accuracy: 19.88%
+{"train_lr": 0.002396259228584022, "train_loss": 0.875757925678862, "test_loss": 4.232932830229402, "test_acc1": 19.878827575323957, "test_acc5": 42.71327984280334, "epoch": 1, "n_parameters": 92059854}
+Training epoch 1 for 0:13:10
+Accuracy of the network on the 24426 test images: 29.5%
+Max accuracy: 29.53%
+{"train_lr": 0.003996259228584019, "train_loss": 0.8186553235096566, "test_loss": 3.575360337893168, "test_acc1": 29.531684949430446, "test_acc5": 54.89602096111622, "epoch": 2, "n_parameters": 92059854}
+Training epoch 2 for 0:13:07
+Accuracy of the network on the 24426 test images: 36.0%
+Max accuracy: 35.97%
+{"train_lr": 0.005596259228584015, "train_loss": 0.782824769197604, "test_loss": 3.177651919424534, "test_acc1": 35.96692320272578, "test_acc5": 61.83068609901355, "epoch": 3, "n_parameters": 92059854}
+Training epoch 3 for 0:13:09
+Accuracy of the network on the 24426 test images: 39.6%
+Max accuracy: 39.59%
+{"train_lr": 0.007196259228584015, "train_loss": 0.756617373275157, "test_loss": 2.9556354048351445, "test_acc1": 39.593908631627876, "test_acc5": 65.49042082527802, "epoch": 4, "n_parameters": 92059854}
+Training epoch 4 for 0:13:12
+Accuracy of the network on the 24426 test images: 44.4%
+Max accuracy: 44.39%
+{"train_lr": 0.007999276173230424, "train_loss": 0.7336765070532483, "test_loss": 2.664499446749687, "test_acc1": 44.391681678482136, "test_acc5": 70.12444735799227, "epoch": 5, "n_parameters": 92059854}
+Training epoch 5 for 0:13:19
+Accuracy of the network on the 24426 test images: 48.7%
+Max accuracy: 48.71%
+{"train_lr": 0.007994913795113757, "train_loss": 0.7131392736273456, "test_loss": 2.4515682676186166, "test_acc1": 48.71049614852123, "test_acc5": 73.34616015159266, "epoch": 6, "n_parameters": 92059854}
+Training epoch 6 for 0:13:29
+Accuracy of the network on the 24426 test images: 51.2%
+Max accuracy: 51.24%
+{"train_lr": 0.007986183584157506, "train_loss": 0.6946543999072959, "test_loss": 2.2966185103481016, "test_acc1": 51.240379895675154, "test_acc5": 75.454396599538, "epoch": 7, "n_parameters": 92059854}
+Training epoch 7 for 0:13:30
+Accuracy of the network on the 24426 test images: 53.1%
+Max accuracy: 53.14%
+{"train_lr": 0.007973095086719171, "train_loss": 0.68072745405822, "test_loss": 2.1892154750724635, "test_acc1": 53.14393318876495, "test_acc5": 77.0509251694018, "epoch": 8, "n_parameters": 92059854}
+Training epoch 8 for 0:13:30
+Accuracy of the network on the 24426 test images: 54.7%
+Max accuracy: 54.70%
+{"train_lr": 0.007955662614878555, "train_loss": 0.6693294481567781, "test_loss": 2.137482676965495, "test_acc1": 54.69543147411131, "test_acc5": 78.04977894844392, "epoch": 9, "n_parameters": 92059854}
+Training epoch 9 for 0:13:29
+Accuracy of the network on the 24426 test images: 56.3%
+Max accuracy: 56.29%
+{"train_lr": 0.007933905230787724, "train_loss": 0.6564495470952472, "test_loss": 2.0173482668275633, "test_acc1": 56.28786638768035, "test_acc5": 79.35975111278474, "epoch": 10, "n_parameters": 92059854}
+Training epoch 10 for 0:13:30
+Accuracy of the network on the 24426 test images: 57.5%
+Max accuracy: 57.53%
+{"train_lr": 0.007907846725826704, "train_loss": 0.6476987052235846, "test_loss": 1.9517902539422114, "test_acc1": 57.53233993418462, "test_acc5": 79.91239562158755, "epoch": 11, "n_parameters": 92059854}
+Training epoch 11 for 0:13:26
+Accuracy of the network on the 24426 test images: 58.3%
+Max accuracy: 58.25%
+{"train_lr": 0.007877515594588002, "train_loss": 0.642131709320947, "test_loss": 1.9242548818389575, "test_acc1": 58.25282462263568, "test_acc5": 80.88668742163473, "epoch": 12, "n_parameters": 92059854}
+Training epoch 12 for 0:13:28
+Accuracy of the network on the 24426 test images: 59.6%
+Max accuracy: 59.62%
+{"train_lr": 0.007842945003718479, "train_loss": 0.6338980909177544, "test_loss": 1.8746482245624065, "test_acc1": 59.62420173633776, "test_acc5": 81.32880302667813, "epoch": 13, "n_parameters": 92059854}
+Training epoch 13 for 0:13:24
+Accuracy of the network on the 24426 test images: 59.8%
+Max accuracy: 59.84%
+{"train_lr": 0.007804172755651515, "train_loss": 0.626606978210111, "test_loss": 1.8335936442017555, "test_acc1": 59.83707221081004, "test_acc5": 81.88963485775241, "epoch": 14, "n_parameters": 92059854}
+Training epoch 14 for 0:13:27
+Accuracy of the network on the 24426 test images: 60.9%
+Max accuracy: 60.93%
+{"train_lr": 0.007761241247271281, "train_loss": 0.6201681164123288, "test_loss": 1.7863107559581597, "test_acc1": 60.93417390067858, "test_acc5": 82.33584412112063, "epoch": 15, "n_parameters": 92059854}
+Training epoch 15 for 0:13:26
+Accuracy of the network on the 24426 test images: 61.8%
+Max accuracy: 61.79%
+{"train_lr": 0.007714197423551724, "train_loss": 0.6129263161374785, "test_loss": 1.7567280111834407, "test_acc1": 61.78974946126505, "test_acc5": 82.777959735846, "epoch": 16, "n_parameters": 92059854}
+Training epoch 16 for 0:13:26
+Accuracy of the network on the 24426 test images: 62.3%
+Max accuracy: 62.31%
+{"train_lr": 0.0076630927262235585, "train_loss": 0.6087638326141833, "test_loss": 1.7266511207756896, "test_acc1": 62.305551010164315, "test_acc5": 83.35925986760178, "epoch": 17, "n_parameters": 92059854}
+Training epoch 17 for 0:13:23
+Accuracy of the network on the 24426 test images: 63.0%
+Max accuracy: 62.99%
+{"train_lr": 0.007607983037522859, "train_loss": 0.6064932024430084, "test_loss": 1.6713437562187512, "test_acc1": 62.99328639656818, "test_acc5": 83.97330933341775, "epoch": 18, "n_parameters": 92059854}
+Training epoch 18 for 0:13:26
+Accuracy of the network on the 24426 test images: 63.3%
+Max accuracy: 63.32%
+{"train_lr": 0.0075489286190852075, "train_loss": 0.5991131694711671, "test_loss": 1.663648561264078, "test_acc1": 63.31668577011506, "test_acc5": 83.94465367673402, "epoch": 19, "n_parameters": 92059854}
+Training epoch 19 for 0:13:39
+Accuracy of the network on the 24426 test images: 63.6%
+Max accuracy: 63.55%
+{"train_lr": 0.007485994046049989, "train_loss": 0.592884982644535, "test_loss": 1.6501291862999399, "test_acc1": 63.55411822514388, "test_acc5": 84.20255445602464, "epoch": 20, "n_parameters": 92059854}
+Training epoch 20 for 0:13:41
+Accuracy of the network on the 24426 test images: 64.3%
+Max accuracy: 64.33%
+{"train_lr": 0.00741924813644899, "train_loss": 0.586814293002458, "test_loss": 1.610906461874644, "test_acc1": 64.3278205367807, "test_acc5": 84.66513838329975, "epoch": 21, "n_parameters": 92059854}
+Training epoch 21 for 0:13:37
+Accuracy of the network on the 24426 test images: 64.8%
+Max accuracy: 64.76%
+{"train_lr": 0.007348763875954379, "train_loss": 0.5839679112920572, "test_loss": 1.5895038237795234, "test_acc1": 64.76174881377469, "test_acc5": 84.88210252281178, "epoch": 22, "n_parameters": 92059854}
+Training epoch 22 for 0:13:31
+Accuracy of the network on the 24426 test images: 65.1%
+Max accuracy: 65.11%
+{"train_lr": 0.00727461833807004, "train_loss": 0.5814351351106635, "test_loss": 1.6068743686191738, "test_acc1": 65.10561650439996, "test_acc5": 84.71016866922261, "epoch": 23, "n_parameters": 92059854}
+Training epoch 23 for 0:13:30
+Accuracy of the network on the 24426 test images: 65.4%
+Max accuracy: 65.40%
+{"train_lr": 0.007196892599853194, "train_loss": 0.5746923597031445, "test_loss": 1.5633891473213832, "test_acc1": 65.39626658355154, "test_acc5": 85.23415753570852, "epoch": 24, "n_parameters": 92059854}
+Training epoch 24 for 0:13:31
+Accuracy of the network on the 24426 test images: 65.8%
+Max accuracy: 65.83%
+{"train_lr": 0.007115671653257377, "train_loss": 0.5754407424351115, "test_loss": 1.5361445602029562, "test_acc1": 65.83019485882774, "test_acc5": 85.61486818717431, "epoch": 25, "n_parameters": 92059854}
+Training epoch 25 for 0:13:33
+Accuracy of the network on the 24426 test images: 66.0%
+Max accuracy: 65.98%
+{"train_lr": 0.007031044312195197, "train_loss": 0.5689451568866244, "test_loss": 1.5403547844228644, "test_acc1": 65.98166039112216, "test_acc5": 85.77452104923591, "epoch": 26, "n_parameters": 92059854}
+Training epoch 26 for 0:13:32
+Accuracy of the network on the 24426 test images: 66.5%
+Max accuracy: 66.52%
+{"train_lr": 0.006943103115421613, "train_loss": 0.5667888353605449, "test_loss": 1.502943005412817, "test_acc1": 66.51793024663705, "test_acc5": 86.16751269347854, "epoch": 27, "n_parameters": 92059854}
+Training epoch 27 for 0:13:34
+Accuracy of the network on the 24426 test images: 67.0%
+Max accuracy: 66.97%
+{"train_lr": 0.006851944225344127, "train_loss": 0.5606717362393929, "test_loss": 1.5088039768549304, "test_acc1": 66.97232683727388, "test_acc5": 85.75814639376173, "epoch": 28, "n_parameters": 92059854}
+Training epoch 28 for 0:13:37
+Accuracy of the network on the 24426 test images: 67.6%
+Max accuracy: 67.64%
+{"train_lr": 0.006757667322870888, "train_loss": 0.5569971928175707, "test_loss": 1.474655069410801, "test_acc1": 67.63550024062263, "test_acc5": 86.47044374776078, "epoch": 29, "n_parameters": 92059854}
+Training epoch 29 for 0:13:35
+Accuracy of the network on the 24426 test images: 67.6%
+Max accuracy: 67.64%
+{"train_lr": 0.006660375498410286, "train_loss": 0.555081238195239, "test_loss": 1.477633017115295, "test_acc1": 67.59456361302459, "test_acc5": 86.39266416369473, "epoch": 30, "n_parameters": 92059854}
+Training epoch 30 for 0:13:26
+Accuracy of the network on the 24426 test images: 68.1%
+Max accuracy: 68.09%
+{"train_lr": 0.006560175139144061, "train_loss": 0.5522308761876288, "test_loss": 1.455543435178697, "test_acc1": 68.08580317793178, "test_acc5": 86.53184870852178, "epoch": 31, "n_parameters": 92059854}
+Training epoch 31 for 0:13:40
+Accuracy of the network on the 24426 test images: 68.2%
+Max accuracy: 68.18%
+{"train_lr": 0.006457175812693979, "train_loss": 0.5463111993642562, "test_loss": 1.4525799474989374, "test_acc1": 68.17995742215683, "test_acc5": 86.84296709475744, "epoch": 32, "n_parameters": 92059854}
+Training epoch 32 for 0:13:33
+Accuracy of the network on the 24426 test images: 68.6%
+Max accuracy: 68.61%
+{"train_lr": 0.006351490147311304, "train_loss": 0.5432823847950969, "test_loss": 1.43370657445242, "test_acc1": 68.61388570711502, "test_acc5": 86.86343540512092, "epoch": 33, "n_parameters": 92059854}
+Training epoch 33 for 0:13:36
+Accuracy of the network on the 24426 test images: 68.9%
+Max accuracy: 68.93%
+{"train_lr": 0.006243233708719388, "train_loss": 0.5390584802395632, "test_loss": 1.409401157560448, "test_acc1": 68.93319141937, "test_acc5": 87.29327001988605, "epoch": 34, "n_parameters": 92059854}
+Training epoch 34 for 0:13:36
+Accuracy of the network on the 24426 test images: 68.4%
+Max accuracy: 68.93%
+{"train_lr": 0.006132524873744516, "train_loss": 0.537122265607415, "test_loss": 1.421382621396333, "test_acc1": 68.38464058310267, "test_acc5": 87.20730311104997, "epoch": 35, "n_parameters": 92059854}
+Training epoch 35 for 0:13:32
+Accuracy of the network on the 24426 test images: 69.1%
+Max accuracy: 69.11%
+{"train_lr": 0.006019484700872223, "train_loss": 0.5343816155374852, "test_loss": 1.410101238482942, "test_acc1": 69.11331260007162, "test_acc5": 87.43654823240759, "epoch": 36, "n_parameters": 92059854}
+Training epoch 36 for 0:13:41
+Accuracy of the network on the 24426 test images: 69.6%
+Max accuracy: 69.61%
+{"train_lr": 0.0059042367978720004, "train_loss": 0.5285197208439871, "test_loss": 1.3829983064594369, "test_acc1": 69.60864581596408, "test_acc5": 87.64123137102241, "epoch": 37, "n_parameters": 92059854}
+Training epoch 37 for 0:13:39
+Accuracy of the network on the 24426 test images: 69.4%
+Max accuracy: 69.61%
+{"train_lr": 0.005786907186633679, "train_loss": 0.5255763679263256, "test_loss": 1.3796183977586527, "test_acc1": 69.42443098131014, "test_acc5": 87.50204684306074, "epoch": 38, "n_parameters": 92059854}
+Training epoch 38 for 0:13:40
+Accuracy of the network on the 24426 test images: 69.6%
+Max accuracy: 69.64%
+{"train_lr": 0.005667624165364495, "train_loss": 0.5236511749720595, "test_loss": 1.385829262745877, "test_acc1": 69.64139512160298, "test_acc5": 87.64532503403207, "epoch": 39, "n_parameters": 92059854}
+Training epoch 39 for 0:14:00
+Accuracy of the network on the 24426 test images: 70.2%
+Max accuracy: 70.22%
+{"train_lr": 0.0055465181682969565, "train_loss": 0.5221786568275908, "test_loss": 1.3551006230215232, "test_acc1": 70.21860160846376, "test_acc5": 87.69444900076694, "epoch": 40, "n_parameters": 92059854}
+Training epoch 40 for 0:14:06
+Accuracy of the network on the 24426 test images: 70.2%
+Max accuracy: 70.22%
+{"train_lr": 0.0054237216230608905, "train_loss": 0.5186331896836155, "test_loss": 1.3483391025414069, "test_acc1": 70.21860160893225, "test_acc5": 87.92778779606549, "epoch": 41, "n_parameters": 92059854}
+Training epoch 41 for 0:14:14
+Accuracy of the network on the 24426 test images: 70.4%
+Max accuracy: 70.35%
+{"train_lr": 0.005299368805875475, "train_loss": 0.5142945959845818, "test_loss": 1.3356810434100528, "test_acc1": 70.353692485284, "test_acc5": 88.14475193557752, "epoch": 42, "n_parameters": 92059854}
+Training epoch 42 for 0:14:37
+Accuracy of the network on the 24426 test images: 70.4%
+Max accuracy: 70.37%
+{"train_lr": 0.005173595694720675, "train_loss": 0.51204664678236, "test_loss": 1.3522833669558167, "test_acc1": 70.37416079908301, "test_acc5": 87.97691174374873, "epoch": 43, "n_parameters": 92059854}
+Training epoch 43 for 0:14:44
+Accuracy of the network on the 24426 test images: 71.0%
+Max accuracy: 70.97%
+{"train_lr": 0.005046539820646821, "train_loss": 0.5086780950392178, "test_loss": 1.3368249386548996, "test_acc1": 70.96774193173601, "test_acc5": 87.95644343119899, "epoch": 44, "n_parameters": 92059854}
+Training epoch 44 for 0:14:31
+Accuracy of the network on the 24426 test images: 71.0%
+Max accuracy: 70.97%
+{"train_lr": 0.004918340117386964, "train_loss": 0.5055865673048584, "test_loss": 1.3331110255482297, "test_acc1": 70.97183559849353, "test_acc5": 88.13247093343102, "epoch": 45, "n_parameters": 92059854}
+Training epoch 45 for 0:14:32
+Accuracy of the network on the 24426 test images: 71.3%
+Max accuracy: 71.28%
+{"train_lr": 0.004789136769434289, "train_loss": 0.501924286867318, "test_loss": 1.3149925485874217, "test_acc1": 71.28295398972635, "test_acc5": 88.15293925566273, "epoch": 46, "n_parameters": 92059854}
+Training epoch 46 for 0:14:40
+Accuracy of the network on the 24426 test images: 71.1%
+Max accuracy: 71.28%
+{"train_lr": 0.004659071058752921, "train_loss": 0.5023664593426298, "test_loss": 1.312370512324075, "test_acc1": 71.14376944739787, "test_acc5": 88.4927132782812, "epoch": 47, "n_parameters": 92059854}
+Training epoch 47 for 0:14:53
+Accuracy of the network on the 24426 test images: 71.7%
+Max accuracy: 71.73%
+{"train_lr": 0.004528285210287882, "train_loss": 0.4992133724089601, "test_loss": 1.2956584145625432, "test_acc1": 71.73325691953977, "test_acc5": 88.7874570280943, "epoch": 48, "n_parameters": 92059854}
+Training epoch 48 for 0:15:09
+Accuracy of the network on the 24426 test images: 71.7%
+Max accuracy: 71.74%
+{"train_lr": 0.004396922236444196, "train_loss": 0.4960990931452925, "test_loss": 1.2953821540189285, "test_acc1": 71.74144424805768, "test_acc5": 88.63189781936039, "epoch": 49, "n_parameters": 92059854}
+Training epoch 49 for 0:15:07
+Accuracy of the network on the 24426 test images: 71.8%
+Max accuracy: 71.77%
+{"train_lr": 0.004265125780705206, "train_loss": 0.49148478665246886, "test_loss": 1.2980889097477, "test_acc1": 71.7700998870952, "test_acc5": 88.62780416946823, "epoch": 50, "n_parameters": 92059854}
+Training epoch 50 for 0:15:07
+Accuracy of the network on the 24426 test images: 72.0%
+Max accuracy: 72.04%
+{"train_lr": 0.004133039960560204, "train_loss": 0.4893602045648554, "test_loss": 1.294690330202381, "test_acc1": 72.04437531373964, "test_acc5": 88.87342393693038, "epoch": 51, "n_parameters": 92059854}
+Training epoch 51 for 0:14:51
+Accuracy of the network on the 24426 test images: 72.4%
+Max accuracy: 72.36%
+{"train_lr": 0.004000809209914259, "train_loss": 0.4851639673044069, "test_loss": 1.2757820653108258, "test_acc1": 72.35958736501506, "test_acc5": 88.95120354004806, "epoch": 52, "n_parameters": 92059854}
+Training epoch 52 for 0:14:37
+Accuracy of the network on the 24426 test images: 72.3%
+Max accuracy: 72.36%
+{"train_lr": 0.003868578121151806, "train_loss": 0.4801540281634501, "test_loss": 1.2790318648330867, "test_acc1": 72.33911904871746, "test_acc5": 89.06991976139412, "epoch": 53, "n_parameters": 92059854}
+Training epoch 53 for 0:14:24
+Accuracy of the network on the 24426 test images: 72.2%
+Max accuracy: 72.36%
+{"train_lr": 0.003736491287027017, "train_loss": 0.4796407969004756, "test_loss": 1.2671734752754371, "test_acc1": 72.2326838079677, "test_acc5": 89.00442116885563, "epoch": 54, "n_parameters": 92059854}
+Training epoch 54 for 0:14:27
+Accuracy of the network on the 24426 test images: 72.5%
+Max accuracy: 72.53%
+{"train_lr": 0.0036046931425537374, "train_loss": 0.47729485915759073, "test_loss": 1.2661417940010626, "test_acc1": 72.52742754638108, "test_acc5": 89.11085638555662, "epoch": 55, "n_parameters": 92059854}
+Training epoch 55 for 0:14:43
+Accuracy of the network on the 24426 test images: 72.8%
+Max accuracy: 72.81%
+{"train_lr": 0.0034733278070678973, "train_loss": 0.4752128661428717, "test_loss": 1.2640422356004517, "test_acc1": 72.8098902935792, "test_acc5": 89.09448174663548, "epoch": 56, "n_parameters": 92059854}
+Training epoch 56 for 0:14:55
+Accuracy of the network on the 24426 test images: 73.1%
+Max accuracy: 73.12%
+{"train_lr": 0.003342538926635174, "train_loss": 0.4685637153033331, "test_loss": 1.2498185080476105, "test_acc1": 73.12100868731059, "test_acc5": 89.12723104477865, "epoch": 57, "n_parameters": 92059854}
+Training epoch 57 for 0:15:00
+Accuracy of the network on the 24426 test images: 73.3%
+Max accuracy: 73.26%
+{"train_lr": 0.003212469516976059, "train_loss": 0.4676821151821323, "test_loss": 1.2406222939801712, "test_acc1": 73.26019321839549, "test_acc5": 89.34010152003174, "epoch": 58, "n_parameters": 92059854}
+Training epoch 58 for 0:15:03
+Accuracy of the network on the 24426 test images: 73.4%
+Max accuracy: 73.41%
+{"train_lr": 0.003083261807080392, "train_loss": 0.46301423841319006, "test_loss": 1.2505684169009328, "test_acc1": 73.407565094239, "test_acc5": 89.11085639274002, "epoch": 59, "n_parameters": 92059854}
+Training epoch 59 for 0:15:04
+Accuracy of the network on the 24426 test images: 73.5%
+Max accuracy: 73.48%
+{"train_lr": 0.0029550570836819594, "train_loss": 0.4619316748932501, "test_loss": 1.2340442966669798, "test_acc1": 73.48125102716361, "test_acc5": 89.3032585601282, "epoch": 60, "n_parameters": 92059854}
+Training epoch 60 for 0:15:08
+Accuracy of the network on the 24426 test images: 73.5%
+Max accuracy: 73.52%
+{"train_lr": 0.002827995536763444, "train_loss": 0.4606556304108685, "test_loss": 1.2320250382957358, "test_acc1": 73.52218766475595, "test_acc5": 89.29916489836782, "epoch": 61, "n_parameters": 92059854}
+Training epoch 61 for 0:15:06
+Accuracy of the network on the 24426 test images: 73.5%
+Max accuracy: 73.52%
+{"train_lr": 0.002702216106260967, "train_loss": 0.45592586476968316, "test_loss": 1.2345550977624953, "test_acc1": 73.52218765601094, "test_acc5": 89.32782053818616, "epoch": 62, "n_parameters": 92059854}
+Training epoch 62 for 0:15:03
+Accuracy of the network on the 24426 test images: 73.7%
+Max accuracy: 73.67%
+{"train_lr": 0.0025778563301350555, "train_loss": 0.45253152298022253, "test_loss": 1.228385248997559, "test_acc1": 73.67365318986697, "test_acc5": 89.3441951842907, "epoch": 63, "n_parameters": 92059854}
+Training epoch 63 for 0:15:01
+Accuracy of the network on the 24426 test images: 74.0%
+Max accuracy: 74.01%
+{"train_lr": 0.002455052193975117, "train_loss": 0.45151199556717125, "test_loss": 1.2074747768541176, "test_acc1": 74.00523989989594, "test_acc5": 89.62665793789142, "epoch": 64, "n_parameters": 92059854}
+Training epoch 64 for 0:14:49
+Accuracy of the network on the 24426 test images: 74.2%
+Max accuracy: 74.17%
+{"train_lr": 0.0023339379823010178, "train_loss": 0.4460432032562439, "test_loss": 1.2161301077188302, "test_acc1": 74.17308008079348, "test_acc5": 89.50794171061125, "epoch": 65, "n_parameters": 92059854}
+Training epoch 65 for 0:14:44
+Accuracy of the network on the 24426 test images: 74.2%
+Max accuracy: 74.22%
+{"train_lr": 0.002214646131725058, "train_loss": 0.4466683335249155, "test_loss": 1.2058564713224769, "test_acc1": 74.21811037015189, "test_acc5": 89.86409038526836, "epoch": 66, "n_parameters": 92059854}
+Training epoch 66 for 0:14:42
+Accuracy of the network on the 24426 test images: 74.1%
+Max accuracy: 74.22%
+{"train_lr": 0.0020973070861344373, "train_loss": 0.44439479032713397, "test_loss": 1.2129470522825916, "test_acc1": 74.09530047986206, "test_acc5": 89.76174880284343, "epoch": 67, "n_parameters": 92059854}
+Training epoch 67 for 0:14:53
+Accuracy of the network on the 24426 test images: 74.5%
+Max accuracy: 74.50%
+{"train_lr": 0.001982049154052701, "train_loss": 0.44246101318686903, "test_loss": 1.1974067982907097, "test_acc1": 74.49647945231027, "test_acc5": 89.95415098116287, "epoch": 68, "n_parameters": 92059854}
+Training epoch 68 for 0:15:06
+Accuracy of the network on the 24426 test images: 74.5%
+Max accuracy: 74.52%
+{"train_lr": 0.001868998368336415, "train_loss": 0.43845452928469847, "test_loss": 1.1970338119814794, "test_acc1": 74.52104143036823, "test_acc5": 89.8722777244052, "epoch": 69, "n_parameters": 92059854}
+Training epoch 69 for 0:15:02
+Accuracy of the network on the 24426 test images: 75.1%
+Max accuracy: 75.08%
+{"train_lr": 0.0017582783483599776, "train_loss": 0.4363468955949411, "test_loss": 1.2046147912430267, "test_acc1": 75.07777960218071, "test_acc5": 89.81087277207688, "epoch": 70, "n_parameters": 92059854}
+Training epoch 70 for 0:15:07
+Accuracy of the network on the 24426 test images: 74.9%
+Max accuracy: 75.08%
+{"train_lr": 0.0016500101648396345, "train_loss": 0.43469370753357744, "test_loss": 1.1975625922592978, "test_acc1": 74.87309645544552, "test_acc5": 89.92958899217365, "epoch": 71, "n_parameters": 92059854}
+Training epoch 71 for 0:14:58
+Accuracy of the network on the 24426 test images: 74.8%
+Max accuracy: 75.08%
+{"train_lr": 0.0015443122074444903, "train_loss": 0.42901475819763973, "test_loss": 1.1942921633211274, "test_acc1": 74.76256754918752, "test_acc5": 89.82724742411553, "epoch": 72, "n_parameters": 92059854}
+Training epoch 72 for 0:15:03
+Accuracy of the network on the 24426 test images: 74.9%
+Max accuracy: 75.08%
+{"train_lr": 0.0014413000553391369, "train_loss": 0.429930821166855, "test_loss": 1.195764472708106, "test_acc1": 74.86081546516725, "test_acc5": 89.92140166022021, "epoch": 73, "n_parameters": 92059854}
+Training epoch 73 for 0:15:03
+Accuracy of the network on the 24426 test images: 75.3%
+Max accuracy: 75.27%
+{"train_lr": 0.0013410863507994598, "train_loss": 0.42406547764254077, "test_loss": 1.186331053885321, "test_acc1": 75.27427542164729, "test_acc5": 90.12608481788666, "epoch": 74, "n_parameters": 92059854}
+Training epoch 74 for 0:14:55
+Accuracy of the network on the 24426 test images: 75.3%
+Max accuracy: 75.30%
+{"train_lr": 0.0012437806760400686, "train_loss": 0.4256096485557526, "test_loss": 1.189721989755829, "test_acc1": 75.30293106521349, "test_acc5": 90.03602424135609, "epoch": 75, "n_parameters": 92059854}
+Training epoch 75 for 0:14:37
+Accuracy of the network on the 24426 test images: 75.4%
+Max accuracy: 75.43%
+{"train_lr": 0.00114948943338769, "train_loss": 0.42352602209169976, "test_loss": 1.185268251846234, "test_acc1": 75.42574095550333, "test_acc5": 89.95005731690392, "epoch": 76, "n_parameters": 92059854}
+Training epoch 76 for 0:14:30
+Accuracy of the network on the 24426 test images: 75.5%
+Max accuracy: 75.52%
+{"train_lr": 0.0010583157289317763, "train_loss": 0.4206190072773858, "test_loss": 1.178394914449503, "test_acc1": 75.52398887195153, "test_acc5": 89.97052562476883, "epoch": 77, "n_parameters": 92059854}
+Training epoch 77 for 0:14:31
+Accuracy of the network on the 24426 test images: 75.6%
+Max accuracy: 75.60%
+{"train_lr": 0.0009703592597795622, "train_loss": 0.4180119063938445, "test_loss": 1.176446949209397, "test_acc1": 75.6017684686666, "test_acc5": 90.13017848214561, "epoch": 78, "n_parameters": 92059854}
+Training epoch 78 for 0:14:24
+Accuracy of the network on the 24426 test images: 75.5%
+Max accuracy: 75.60%
+{"train_lr": 0.0008857162050387076, "train_loss": 0.41705613344528475, "test_loss": 1.1759184189140797, "test_acc1": 75.51989520847339, "test_acc5": 90.04421155894273, "epoch": 79, "n_parameters": 92059854}
+Training epoch 79 for 0:14:26
+Accuracy of the network on the 24426 test images: 75.5%
+Max accuracy: 75.60%
+{"train_lr": 0.000804479120646841, "train_loss": 0.414528803924952, "test_loss": 1.1752797433485587, "test_acc1": 75.54036352477098, "test_acc5": 90.00736859310507, "epoch": 80, "n_parameters": 92059854}
+Training epoch 80 for 0:14:43
+Accuracy of the network on the 24426 test images: 75.6%
+Max accuracy: 75.61%
+{"train_lr": 0.000726736838163044, "train_loss": 0.41138881119921794, "test_loss": 1.174383354295666, "test_acc1": 75.60586213167628, "test_acc5": 90.11789748593323, "epoch": 81, "n_parameters": 92059854}
+Training epoch 81 for 0:14:35
+Accuracy of the network on the 24426 test images: 75.8%
+Max accuracy: 75.84%
+{"train_lr": 0.0006525743676318106, "train_loss": 0.4115700451433746, "test_loss": 1.1683352921778958, "test_acc1": 75.8432945874859, "test_acc5": 90.25708202701242, "epoch": 82, "n_parameters": 92059854}
+Training epoch 82 for 0:14:26
+Accuracy of the network on the 24426 test images: 75.8%
+Max accuracy: 75.84%
+{"train_lr": 0.0005820728046258256, "train_loss": 0.4091854708518826, "test_loss": 1.1702024362360437, "test_acc1": 75.82282627368687, "test_acc5": 90.18748975584818, "epoch": 83, "n_parameters": 92059854}
+Training epoch 83 for 0:14:13
+Accuracy of the network on the 24426 test images: 75.9%
+Max accuracy: 75.85%
+{"train_lr": 0.0005153092415691416, "train_loss": 0.40594237048839393, "test_loss": 1.1670311571409304, "test_acc1": 75.85148191350522, "test_acc5": 90.11380382292357, "epoch": 84, "n_parameters": 92059854}
+Training epoch 84 for 0:14:21
+Accuracy of the network on the 24426 test images: 75.8%
+Max accuracy: 75.85%
+{"train_lr": 0.0004523566834377377, "train_loss": 0.4058607124520227, "test_loss": 1.1747616701759398, "test_acc1": 75.79826429313034, "test_acc5": 90.15883411478056, "epoch": 85, "n_parameters": 92059854}
+Training epoch 85 for 0:14:23
+Accuracy of the network on the 24426 test images: 75.8%
+Max accuracy: 75.85%
+{"train_lr": 0.00039328396792968483, "train_loss": 0.40696532258217866, "test_loss": 1.1711176446794223, "test_acc1": 75.81873260942793, "test_acc5": 90.1956770890509, "epoch": 86, "n_parameters": 92059854}
+Training epoch 86 for 0:14:31
+Accuracy of the network on the 24426 test images: 76.0%
+Max accuracy: 75.96%
+{"train_lr": 0.0003381556901920903, "train_loss": 0.4066289239800102, "test_loss": 1.1652414329970877, "test_acc1": 75.95791714800855, "test_acc5": 90.22433273011853, "epoch": 87, "n_parameters": 92059854}
+Training epoch 87 for 0:14:34
+Accuracy of the network on the 24426 test images: 75.8%
+Max accuracy: 75.96%
+{"train_lr": 0.00028703213218727225, "train_loss": 0.4020928208868255, "test_loss": 1.1679961123348523, "test_acc1": 75.83510726021728, "test_acc5": 90.22023905992548, "epoch": 88, "n_parameters": 92059854}
+Training epoch 88 for 0:14:09
+Accuracy of the network on the 24426 test images: 75.9%
+Max accuracy: 75.96%
+{"train_lr": 0.0002399691967753227, "train_loss": 0.4038290423294775, "test_loss": 1.1639598443483312, "test_acc1": 75.93744883420953, "test_acc5": 90.30211232855137, "epoch": 89, "n_parameters": 92059854}
+Training epoch 89 for 0:14:06
+Accuracy of the network on the 24426 test images: 75.9%
+Max accuracy: 75.96%
+{"train_lr": 0.0001970183465851399, "train_loss": 0.40581333275607556, "test_loss": 1.1674160447437316, "test_acc1": 75.90469953013223, "test_acc5": 90.2570820282617, "epoch": 90, "n_parameters": 92059854}
+Training epoch 90 for 0:14:03
+Accuracy of the network on the 24426 test images: 76.0%
+Max accuracy: 75.98%
+{"train_lr": 0.0001582265477408126, "train_loss": 0.3994591912650326, "test_loss": 1.1631641152780503, "test_acc1": 75.9824791273158, "test_acc5": 90.23252005020375, "epoch": 91, "n_parameters": 92059854}
+Training epoch 91 for 0:13:55
+Accuracy of the network on the 24426 test images: 76.0%
+Max accuracy: 76.03%
+{"train_lr": 0.00012363621850484038, "train_loss": 0.3997919884139226, "test_loss": 1.1621840844551723, "test_acc1": 76.03160308343173, "test_acc5": 90.28573767057863, "epoch": 92, "n_parameters": 92059854}
+Training epoch 92 for 0:13:43
+Accuracy of the network on the 24426 test images: 76.1%
+Max accuracy: 76.08%
+{"train_lr": 9.328518289439345e-05, "train_loss": 0.3978258274188249, "test_loss": 1.163348409968118, "test_acc1": 76.08072704204623, "test_acc5": 90.35532994174285, "epoch": 93, "n_parameters": 92059854}
+Training epoch 93 for 0:13:32
+Accuracy of the network on the 24426 test images: 76.0%
+Max accuracy: 76.08%
+{"train_lr": 6.720662932130037e-05, "train_loss": 0.40053360253755566, "test_loss": 1.1635188843744497, "test_acc1": 76.0316030859303, "test_acc5": 90.31848697465591, "epoch": 94, "n_parameters": 92059854}
+Training epoch 94 for 0:13:29
+Accuracy of the network on the 24426 test images: 76.0%
+Max accuracy: 76.08%
+{"train_lr": 4.5429074301013484e-05, "train_loss": 0.40073103008431044, "test_loss": 1.1608070025686175, "test_acc1": 76.03979041070033, "test_acc5": 90.30620598437764, "epoch": 95, "n_parameters": 92059854}
+Training epoch 95 for 0:13:33
+Accuracy of the network on the 24426 test images: 76.1%
+Max accuracy: 76.08%
+{"train_lr": 2.7976331270212922e-05, "train_loss": 0.39907309260369744, "test_loss": 1.1618599343734484, "test_acc1": 76.0520714009786, "test_acc5": 90.33486162669455, "epoch": 96, "n_parameters": 92059854}
+Training epoch 96 for 0:13:28
+Accuracy of the network on the 24426 test images: 76.1%
+Max accuracy: 76.08%
+{"train_lr": 1.4867484547163632e-05, "train_loss": 0.39839146851691115, "test_loss": 1.1619456607537966, "test_acc1": 76.07253971602691, "test_acc5": 90.31029964863659, "epoch": 97, "n_parameters": 92059854}
+Training epoch 97 for 0:13:29
+Accuracy of the network on the 24426 test images: 76.1%
+Max accuracy: 76.08%
+{"train_lr": 6.116868463295004e-06, "train_loss": 0.3997332682454879, "test_loss": 1.1619196278043091, "test_acc1": 76.08072704204623, "test_acc5": 90.30620598562693, "epoch": 98, "n_parameters": 92059854}
+Training epoch 98 for 0:13:25
+Accuracy of the network on the 24426 test images: 76.1%
+Max accuracy: 76.08%
+{"train_lr": 1.7340516888196695e-06, "train_loss": 0.4004687268620454, "test_loss": 1.1618361064853768, "test_acc1": 76.08072704204623, "test_acc5": 90.31439331164624, "epoch": 99, "n_parameters": 92059854}
+Training epoch 99 for 0:13:25
+Total training time 23:31:36
