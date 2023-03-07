@@ -150,7 +150,7 @@ Balanced Finetuned Models and Masked Generative Pretrained Models.
 
 
 ## Citation
-If you find our idea or code inspiring, please consider giving a star and a citation.
+If you find our idea or code inspiring, please cite our paper:
 ```bibtex
 @inproceedings{LiVT,
   title={Learning Imbalanced Data with Vision Transformers},
@@ -159,9 +159,17 @@ If you find our idea or code inspiring, please consider giving a star and a cita
   year={2023}
 }
 ```
+This code is partially based on [Prior-LT](https://github.com/XuZhengzhuo/Prior-LT), if you use our code, please also cite：
+```bibtex
+@inproceedings{PriorLT,
+  title={Towards Calibrated Model for Long-Tailed Visual Recognition from Prior Perspective},
+  author={Zhengzhuo Xu and Zenghao Chai and Chun Yuan},
+  booktitle={Thirty-Fifth Conference on Neural Information Processing Systems},
+  year={2021}
+}
+```
 
 ## Acknowledgements
 This project is highly based on [DeiT](https://github.com/facebookresearch/deit) and [MAE](https://github.com/facebookresearch/mae).
 
 The CIFAR code is based on [LDAM](https://github.com/kaidic/LDAM-DRW) and [Prior-LT](https://github.com/XuZhengzhuo/Prior-LT).
-
