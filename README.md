@@ -2,7 +2,7 @@
 
 Zhengzhuo Xu, Ruikang Liu, Shuo Yang, Zenghao Chai and Chun Yuan
 
-This repository is the official PyTorch implementation of the paper [LiVT]((https://arxiv.org/abs/2212.02015)) in CVPR 2023.
+This repository is the official PyTorch implementation of the paper [LiVT](https://arxiv.org/abs/2212.02015) in CVPR 2023.
 &nbsp;
 <p align="center">
 <img src='assets/teaser.png'>
