@@ -163,7 +163,7 @@ This code is partially based on [Prior-LT](https://github.com/XuZhengzhuo/Prior-
 ```bibtex
 @inproceedings{PriorLT,
   title={Towards Calibrated Model for Long-Tailed Visual Recognition from Prior Perspective},
-  author={Zhengzhuo Xu and Zenghao Chai and Chun Yuan},
+  author={Xu, Zhengzhuo and Chai, Zenghao and Yuan, Chun},
   booktitle={Thirty-Fifth Conference on Neural Information Processing Systems},
   year={2021}
 }
@@ -173,3 +173,5 @@ This code is partially based on [Prior-LT](https://github.com/XuZhengzhuo/Prior-
 This project is highly based on [DeiT](https://github.com/facebookresearch/deit) and [MAE](https://github.com/facebookresearch/mae).
 
 The CIFAR code is based on [LDAM](https://github.com/kaidic/LDAM-DRW) and [Prior-LT](https://github.com/XuZhengzhuo/Prior-LT).
+
+The loss implementations are based on [CB](https://github.com/vandit15/Class-balanced-loss-pytorch), [LDAM](https://github.com/kaidic/LDAM-DRW), [LADE](https://github.com/hyperconnect/LADE), [PriorLT](https://github.com/XuZhengzhuo/Prior-LT) and [MiSLAS](https://github.com/dvlab-research/MiSLAS).
